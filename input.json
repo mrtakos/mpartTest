@@ -1,0 +1,8 @@
+[
+    {
+        "serverURL": "https://c1i55mxsd6.execute-api.us-west-2.amazonaws.com/Live",
+        "targetRPS": "2",
+        "authKey": "RIqhxTAKNGaSw2waOY2CW3LhLny2EpI27i56VA6N",
+        "durationSec": "10"
+    }
+]
