@@ -31,25 +31,26 @@ async def tick(url, key, rps):
     ''' runs every second
     '''
     global statuscodecount
-    stamp = datetime.now(tz=timezone.utc).strftime('%Y/%m/%d/%H:%M:%S%f')
+    stamp = datetime.now(tz=timezone.utc).strftime('%Y-%m-%dT%H:%M:%S')
     rps = int(rps)
     reqcount = 0
     headers = {
         "X-Api-Key": key,
         "Content-Type": "application/json",
     }
-    payload = {
-        "name": "YOUR_NAME",
-        "date": stamp,
-        "requests_sent": rps
-    }
+    payload = dict(
+        name = "YOUR_NAME",
+        date = stamp,
+        requests_sent = rps
+    )
+
     connector = aiohttp.TCPConnector(ssl=False)
     async with aiohttp.ClientSession(headers=headers, connector=connector) as session:
         for i in range(rps):
             ## maybe check to see if current time is still within the 1 second window
             reqcount += 1
             try:
-                async with session.get(url, data=payload) as resp:
+                async with session.post(url, data=json.dumps(payload)) as resp:
                     result = await resp.json()
                     if result == goodresp:
                         statuscodecount['success'] += 1
