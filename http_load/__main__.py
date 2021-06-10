@@ -2,11 +2,11 @@
 HTTP load generator 
 + Program must accept file-based input for: serverURL, targetRPS, authKey.
 + Program must send up valid request body payload.
-* Program must sanely handle typical HTTP server responses.
++ Program must sanely handle typical HTTP server responses.
 + Program must output to the console the current RPS and target RPS.
-* After the run has completed, program must output a summary of run including relevant request/response metrics.
-* Your API key is limited to 100,000 requests. Please contact us if you need that limit raised for any reason.
-* Program must be submitted via a git repo, and we will want to see commit history
++ After the run has completed, program must output a summary of run including relevant request/response metrics.
++ Your API key is limited to 100,000 requests. Please contact us if you need that limit raised for any reason.
++ Program must be submitted via a git repo, and we will want to see commit history
 '''
 
 import aiohttp
@@ -14,10 +14,8 @@ import asyncio
 from datetime import datetime, timezone
 import json
 import logging
-import requests
-import sched
-import time
-from threading import Timer
+import os
+import sys
 
 logging.basicConfig(filename='http_load.log', level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -29,9 +27,10 @@ statuscodecount = {
     "fail": 0
 }
 
-async def tick(url='', key='', rps=''):
+async def tick(url, key, rps):
     ''' runs every second
     '''
+    global statuscodecount
     stamp = datetime.now(tz=timezone.utc).strftime('%Y/%m/%d/%H:%M:%S%f')
     rps = int(rps)
     reqcount = 0
@@ -44,7 +43,7 @@ async def tick(url='', key='', rps=''):
         "date": stamp,
         "requests_sent": rps
     }
-    connector = aiohttp.TCPConnector(verify_ssl=False)
+    connector = aiohttp.TCPConnector(ssl=False)
     async with aiohttp.ClientSession(headers=headers, connector=connector) as session:
         for i in range(rps):
             ## maybe check to see if current time is still within the 1 second window
@@ -57,7 +56,7 @@ async def tick(url='', key='', rps=''):
                     else:
                         logger.error(result)
                         statuscodecount['fail'] += 1
-                    if resp.status in statuscodecount.keys():
+                    if str(resp.status) in statuscodecount.keys():
                         statuscodecount[str(resp.status)] += 1
                     else:
                         statuscodecount[str(resp.status)] = 1
@@ -65,7 +64,7 @@ async def tick(url='', key='', rps=''):
                 logger.error(e)
                 break
 
-    print(f"time: {stamp} target: {rps}")
+    print(f"time: {stamp} target: {rps} actual: {reqcount}")
     
 
 async def main():
@@ -88,4 +87,11 @@ async def main():
         await asyncio.sleep(1)
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        print(json.dumps(statuscodecount))
+        try:
+            sys.exit(0)
+        except SystemExit:
+            os._exit(0)

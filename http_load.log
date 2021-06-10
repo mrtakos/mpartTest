@@ -1,0 +1,65 @@
+DEBUG:asyncio:Using selector: KqueueSelector
+DEBUG:asyncio:Using selector: KqueueSelector
+DEBUG:asyncio:Using selector: KqueueSelector
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+DEBUG:asyncio:Using selector: KqueueSelector
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+DEBUG:asyncio:Using selector: KqueueSelector
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+DEBUG:asyncio:Using selector: KqueueSelector
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+DEBUG:asyncio:Using selector: KqueueSelector
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+DEBUG:asyncio:Using selector: KqueueSelector
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+DEBUG:asyncio:Using selector: KqueueSelector
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+DEBUG:asyncio:Using selector: KqueueSelector
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}
+ERROR:__main__:{'message': 'Unsupported HTTP Verb. Try POST.'}

@@ -1,4 +1,16 @@
 # mParticle | Senior Site Reliability Engineer (SRE)
+
+## How to run
+
+### command
+    python3 -m http_load
+### output
+    time: 2021/06/10/04:15:42836720 target: 2 actual: 2
+    time: 2021/06/10/04:15:44167751 target: 2 actual: 2
+    time: 2021/06/10/04:15:45324737 target: 2 actual: 2
+    time: 2021/06/10/04:15:46483731 target: 2 actual: 2
+    ^C{"200": 0, "success": 0, "fail": 8, "500": 8}
+
 ## ASSIGNMENT:
 
 Hello Michael,
