@@ -20,7 +20,7 @@ import sys
 logging.basicConfig(filename='http_load.log', level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-goodresp = { "successful": 'true' }
+goodresp = '{"successful":true}'
 statuscodecount = {
     "200": 0,
     "success": 0,
@@ -51,7 +51,7 @@ async def tick(url, key, rps):
             reqcount += 1
             try:
                 async with session.post(url, data=json.dumps(payload)) as resp:
-                    result = await resp.json()
+                    result = await resp.text()
                     if result == goodresp:
                         statuscodecount['success'] += 1
                     else:
