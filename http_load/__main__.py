@@ -21,9 +21,12 @@ from threading import Timer
 
 logging.basicConfig()
 logger = logging.getLogger(__name__)
-
-s = sched.scheduler(time.time, time.sleep)
-
+goodresp = { "successful": 'true' }
+statuscodecount = {
+    "200": 0,
+    "success": 0,
+    "fail": 0
+}
 async def tick(url='', key='', rps=''):
     ''' runs every second
     '''
@@ -39,18 +42,30 @@ async def tick(url='', key='', rps=''):
         "date": stamp,
         "requests_sent": rps
     }
-    async with aiohttp.ClientSession(headers=headers) as session:
+    connector = aiohttp.TCPConnector(verify_ssl=False)
+    async with aiohttp.ClientSession(headers=headers, connector=connector) as session:
         for i in range(rps):
             ## maybe check to see if current time is still within the 1 second window
             reqcount += 1
-            async with session.get(url,data=payload,) as resp:
-                
-                result = await resp.json()
+            try:
+                async with session.get(url, data=payload) as resp:
+                    result = await resp
+                    if result.json() == goodresp:
+                        statuscodecount['success'] += 1
+                    else:
+                        statuscodecount['fail'] += 1
+                    if result.status in statuscodecount.keys():
+                        statuscodecount[str(result.status)] += 1
+                    else:
+                        statuscodecount[str(result.status)] = 1
+            except Exception as e:
+                logger.error(e)
+                break
+
     print(f"time: {stamp} target: {rps}")
+    
 
-
-
-def main():
+async def main():
     ''' Kick off our jobs in input.json
     '''
     inputpath = "input.json"
@@ -65,8 +80,9 @@ def main():
     except Exception as e:
         logger.error(e)
 
-    s.enter(1, 1, tick, (j['serverURL'], j['authKey'], j['targetRPS']))        
-    s.run()
+    while True:
+        await asyncio.sleep(1)
+        await tick(j['serverURL'], j['authKey'], j['targetRPS'])
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
