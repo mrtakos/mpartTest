@@ -19,14 +19,16 @@ import sched
 import time
 from threading import Timer
 
-logging.basicConfig()
+logging.basicConfig(filename='http_load.log', level=logging.DEBUG)
 logger = logging.getLogger(__name__)
+
 goodresp = { "successful": 'true' }
 statuscodecount = {
     "200": 0,
     "success": 0,
     "fail": 0
 }
+
 async def tick(url='', key='', rps=''):
     ''' runs every second
     '''
@@ -49,15 +51,16 @@ async def tick(url='', key='', rps=''):
             reqcount += 1
             try:
                 async with session.get(url, data=payload) as resp:
-                    result = await resp
-                    if result.json() == goodresp:
+                    result = await resp.json()
+                    if result == goodresp:
                         statuscodecount['success'] += 1
                     else:
+                        logger.error(result)
                         statuscodecount['fail'] += 1
-                    if result.status in statuscodecount.keys():
-                        statuscodecount[str(result.status)] += 1
+                    if resp.status in statuscodecount.keys():
+                        statuscodecount[str(resp.status)] += 1
                     else:
-                        statuscodecount[str(result.status)] = 1
+                        statuscodecount[str(resp.status)] = 1
             except Exception as e:
                 logger.error(e)
                 break
@@ -81,10 +84,8 @@ async def main():
         logger.error(e)
 
     while True:
-        await asyncio.sleep(1)
         await tick(j['serverURL'], j['authKey'], j['targetRPS'])
+        await asyncio.sleep(1)
 
-loop = asyncio.get_event_loop()
-loop.run_until_complete(main())
 if __name__ == "__main__":
     asyncio.run(main())
