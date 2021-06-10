@@ -84,5 +84,7 @@ async def main():
         await asyncio.sleep(1)
         await tick(j['serverURL'], j['authKey'], j['targetRPS'])
 
+loop = asyncio.get_event_loop()
+loop.run_until_complete(main())
 if __name__ == "__main__":
     asyncio.run(main())
